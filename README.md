@@ -1,63 +1,68 @@
 🏥 Hospital Management System
 
-A full-stack Hospital Management System that allows hospitals to manage patients, doctors, rooms, appointments, admissions, and billing through a modern web interface.
+A full-stack Hospital Management System that helps hospitals manage patients, doctors, rooms, appointments, admissions, and billing through a modern web interface.
 
-The system is built using Spring Boot (backend) and React + Vite (frontend) with PostgreSQL as the database and deployed using Render and Vercel.
+The system is built using Spring Boot (Backend) and React + Vite (Frontend) with PostgreSQL as the database and deployed using Render and Vercel.
 
 ⸻
 
 🌐 Live Demo
 
 Frontend
-👉 https://hospital-management-system-rust-zeta.vercel.app
+
+🔗 https://hospital-management-system-rust-zeta.vercel.app
 
 Backend API
-👉 https://hospital-backend-xd5h.onrender.com
+
+🔗 https://hospital-backend-xd5h.onrender.com
 
 Example API Endpoint
-👉 https://hospital-backend-xd5h.onrender.com/api/patients
+
+🔗 https://hospital-backend-xd5h.onrender.com/api/patients
 
 ⸻
 
-🧠 Features
+✨ Features
 
-Patient Management
+👨‍⚕️ Patient Management
 	•	Register new patients
 	•	View all patients
-	•	Admit and discharge patients
-	•	Generate billing during discharge
+	•	Admit patients to rooms
+	•	Discharge patients
+	•	Automatic billing generation
 
-Doctor Management
+🩺 Doctor Management
 	•	Add doctors
-	•	View available doctors
+	•	View doctor list
+	•	Assign doctors to patients
 
-Room Management
+🏥 Room Management
 	•	Add hospital rooms
-	•	View room availability
-	•	Assign rooms during admission
+	•	View available rooms
+	•	Assign rooms during patient admission
 
-Appointment System
-	•	Book appointments with doctors
-	•	Automatic appointment tracking
+📅 Appointment System
+	•	Book doctor appointments
+	•	Track appointments
 
-Billing System
-	•	Calculate patient billing
-	•	Deduct deposit and generate final bill
+💰 Billing System
+	•	Generate patient bill during discharge
+	•	Deduct patient deposit automatically
 
 ⸻
 
 🏗️ System Architecture
 
-Frontend
-React + Vite
-
-Backend
-Spring Boot REST API
-
-Database
-PostgreSQL (Neon Cloud DB)
+React + Vite (Frontend)
+        │
+        ▼
+Spring Boot REST API (Backend)
+        │
+        ▼
+PostgreSQL Database (Neon Cloud)
 
 Deployment
+
 Frontend → Vercel
 Backend → Render
 
@@ -69,7 +74,7 @@ Backend
 	•	Java 21
 	•	Spring Boot
 	•	Spring Data JPA
-	•	REST API
+	•	REST APIs
 	•	Maven
 	•	Docker
 
@@ -80,7 +85,7 @@ Frontend
 	•	Tailwind CSS
 
 Database
-	•	PostgreSQL (Neon)
+	•	PostgreSQL (Neon Cloud)
 
 Deployment
 	•	Render (Backend)
@@ -92,14 +97,14 @@ Deployment
 
 hospital-management-system
 │
-├── Hospital-Mangement-System   # Spring Boot Backend
+├── Hospital-Mangement-System      # Spring Boot Backend
 │   ├── Controller
 │   ├── Service
 │   ├── Model
 │   ├── DTO
 │   └── Config
 │
-├── hospital-frontend           # React Frontend
+├── hospital-frontend              # React Frontend
 │   ├── components
 │   ├── pages
 │   └── config.js
@@ -138,16 +143,16 @@ POST /api/appointments
 
 🐳 Running Locally (Docker)
 
-Clone the repository
+Clone Repository
 
 git clone https://github.com/MADDY123987/hospital-management-system.git
 cd hospital-management-system
 
-Run using Docker
+Run with Docker
 
 docker compose up --build
 
-Backend will run on
+Backend runs at
 
 http://localhost:8085
 
@@ -172,20 +177,9 @@ npm run dev
 
 📊 Future Improvements
 	•	Authentication (Spring Security + JWT)
-	•	Role based access (Admin / Doctor / Staff)
+	•	Role-based access (Admin / Doctor / Staff)
 	•	Payment gateway integration
 	•	Patient medical history tracking
 	•	Dashboard analytics
 
 ⸻
-
-👨‍💻 Author
-
-Madhavan R
-B.Tech CSE – VIT Vellore
-
-GitHub
-https://github.com/MADDY123987
-
-LinkedIn
-https://linkedin.com/in/madhavan-r

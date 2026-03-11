@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
+
+@CrossOrigin(origins = "https://hospital-management-system-rust-zeta.vercel.app")
 @RestController
 @RequestMapping("/api")
 public class HospitalController {

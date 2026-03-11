@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import API_BASE_URL from "../config";
 
 export default function TableView({ endpoint, title, columns }) {
   const [data, setData] = useState([]);

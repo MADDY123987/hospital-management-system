@@ -103,7 +103,17 @@ POST /api/appointments
 ```
 
 ---
+## 🗄️ Database Stored Procedures
 
+PostgreSQL stored procedures handle critical hospital workflows at the database level. Instead of executing raw SQL from the application layer, the backend calls these procedures via Spring Data JPA's `@Procedure` annotation — ensuring better data consistency, encapsulated logic, and improved transaction handling.
+
+| Procedure | Description |
+|-----------|-------------|
+| `sp_book_appointment` | Books a new appointment between a patient and doctor |
+| `sp_admit_patient` | Admits a patient to a room and assigns a doctor |
+| `sp_discharge_patient` | Discharges a patient and generates billing information |
+
+---
 ## 🐳 Running Locally (Docker)
 
 **Clone the repository:**

@@ -16,31 +16,21 @@ A full-stack Hospital Management System that helps hospitals manage patients, do
 
 ## ✨ Features
 
-### 👨‍⚕️ Patient Management
-- Register new patients
-- View all patients
-- Admit patients to rooms
-- Discharge patients
-- Automatic billing generation
-
-### 🩺 Doctor Management
-- Add doctors
-- View doctor list
-- Assign doctors to patients
-
-### 🏥 Room Management
-- Add hospital rooms
-- View available rooms
-- Assign rooms during patient admission
-
-### 📅 Appointment System
-- Book doctor appointments
-- Track appointments
-
-### 💰 Billing System
-- Generate patient bill during discharge
-- Deduct patient deposit automatically
-
+| | |
+|---|---|
+| **👨‍⚕️ Patient Management** | **🩺 Doctor Management** |
+| ✅ Register new patients | ✅ Add doctors |
+| ✅ View all patients | ✅ View doctor list |
+| ✅ Admit patients to rooms | ✅ Assign doctors to patients |
+| ✅ Discharge patients | |
+| ✅ Automatic billing generation | | 
+| **🏥 Room Management** | **📅 Appointment System** |
+| ✅ Add hospital rooms | ✅ Book doctor appointments |
+| ✅ View available rooms | ✅ Track appointments |
+| ✅ Assign rooms during admission | |
+| **💰 Billing System** | |
+| ✅ Generate patient bill during discharge | |
+| ✅ Deduct patient deposit automatically | |
 ---
 
 ## 🏗️ System Architecture

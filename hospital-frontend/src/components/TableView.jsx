@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import API_BASE_URL from "../config";
 
 export default function TableView({ endpoint, title, columns }) {
   const [data, setData] = useState([]);
@@ -13,7 +14,7 @@ export default function TableView({ endpoint, title, columns }) {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:8085/api/${endpoint}`);
+      const response = await axios.get(`https://hospital-backend-xd5h.onrender.com/api/${endpoint}`);
       setData(response.data);
       setError(null);
     } catch (err) {

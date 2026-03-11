@@ -23,7 +23,7 @@ export default function DischargePatient() {
     try {
       const patientId = parseInt(formData.patientId);
       const response = await axios.put(
-        `http://localhost:8085/api/patients/${patientId}/discharge`,
+        `https://hospital-backend-xd5h.onrender.com/api/patients/${patientId}/discharge`,
         { deposit: parseFloat(formData.deposit) }
       );
       

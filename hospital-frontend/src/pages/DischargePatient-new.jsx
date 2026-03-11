@@ -1,1 +1,127 @@
-import { useState } from 'react';\nimport axios from 'axios';\n\nexport default function DischargePatient() {\n  const [formData, setFormData] = useState({\n    patientId: '',\n    deposit: ''\n  });\n  const [message, setMessage] = useState('');\n  const [loading, setLoading] = useState(false);\n  const [billingResult, setBillingResult] = useState(null);\n\n  const handleChange = (e) => {\n    setFormData({\n      ...formData,\n      [e.target.name]: e.target.value\n    });\n  };\n\n  const handleSubmit = async (e) => {\n    e.preventDefault();\n    setLoading(true);\n    try {\n      const patientId = parseInt(formData.patientId);\n      const response = await axios.put(\n        `http://localhost:8085/api/patients/${patientId}/discharge`,\n        { deposit: parseFloat(formData.deposit) }\n      );\n      \n      setBillingResult(response.data);\n      setMessage('✓ Patient discharged successfully!');\n      setFormData({ patientId: '', deposit: '' });\n      setTimeout(() => setMessage(''), 5000);\n    } catch (error) {\n      setMessage('✗ Error: ' + (error.response?.data?.message || error.message));\n      setBillingResult(null);\n    } finally {\n      setLoading(false);\n    }\n  };\n\n  return (\n    <div className=\"space-y-6 max-w-md\">\n      <h1 className=\"text-3xl font-bold text-white mb-8\">Discharge Patient</h1>\n      \n      <div className=\"bg-gray-800 rounded-xl p-8 border border-gray-700\">\n        <form onSubmit={handleSubmit} className=\"space-y-5\">\n          <div>\n            <label className=\"block text-sm font-medium text-gray-300 mb-2\">Patient ID</label>\n            <input\n              type=\"number\"\n              name=\"patientId\"\n              value={formData.patientId}\n              onChange={handleChange}\n              required\n              className=\"w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition\"\n              placeholder=\"1\"\n            />\n          </div>\n\n          <div>\n            <label className=\"block text-sm font-medium text-gray-300 mb-2\">Deposit Amount ($)</label>\n            <input\n              type=\"number\"\n              name=\"deposit\"\n              value={formData.deposit}\n              onChange={handleChange}\n              required\n              step=\"0.01\"\n              className=\"w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition\"\n              placeholder=\"5000\"\n            />\n          </div>\n\n          <button\n            type=\"submit\"\n            disabled={loading}\n            className=\"w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed mt-6\"\n          >\n            {loading ? 'Processing...' : 'Discharge Patient'}\n          </button>\n        </form>\n\n        {message && (\n          <div className={`mt-4 p-3 rounded-lg text-sm font-medium ${\n            message.startsWith('✓') \n              ? 'bg-green-900 text-green-300 border border-green-700' \n              : 'bg-red-900 text-red-300 border border-red-700'\n          }`}>\n            {message}\n          </div>\n        )}\n      </div>\n\n      {billingResult && (\n        <div className=\"bg-gray-800 border border-gray-700 rounded-xl p-8\">\n          <h3 className=\"text-xl font-semibold text-white mb-6\">Billing Summary</h3>\n          <div className=\"space-y-3\">\n            {Object.entries(billingResult).map(([key, value]) => (\n              <div key={key} className=\"flex justify-between items-center\">\n                <span className=\"text-gray-400 font-medium capitalize\">{key.replace(/([A-Z])/g, ' $1')}:</span>\n                <span className=\"text-lg font-semibold text-white\">{typeof value === 'number' ? `$${value.toFixed(2)}` : value}</span>\n              </div>\n            ))}\n          </div>\n        </div>\n      )}\n    </div>\n  );\n}
+import { useState } from 'react';
+import axios from 'axios';
+
+export default function DischargePatient() {
+  const [formData, setFormData] = useState({
+    patientId: '',
+    deposit: ''
+  });
+  const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [billingResult, setBillingResult] = useState(null);
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const patientId = parseInt(formData.patientId);
+
+      const response = await axios.put(
+        `https://hospital-backend-xd5h.onrender.com/api/patients/${patientId}/discharge`,
+        { deposit: parseFloat(formData.deposit) }
+      );
+
+      setBillingResult(response.data);
+      setMessage('✓ Patient discharged successfully!');
+      setFormData({ patientId: '', deposit: '' });
+      setTimeout(() => setMessage(''), 5000);
+
+    } catch (error) {
+      setMessage('✗ Error: ' + (error.response?.data?.message || error.message));
+      setBillingResult(null);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="space-y-6 max-w-md">
+      <h1 className="text-3xl font-bold text-white mb-8">Discharge Patient</h1>
+      
+      <div className="bg-gray-800 rounded-xl p-8 border border-gray-700">
+        <form onSubmit={handleSubmit} className="space-y-5">
+
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-2">
+              Patient ID
+            </label>
+            <input
+              type="number"
+              name="patientId"
+              value={formData.patientId}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white"
+              placeholder="1"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-2">
+              Deposit Amount ($)
+            </label>
+            <input
+              type="number"
+              name="deposit"
+              value={formData.deposit}
+              onChange={handleChange}
+              required
+              step="0.01"
+              className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white"
+              placeholder="5000"
+            />
+          </div>
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full py-3 bg-blue-600 text-white rounded-lg"
+          >
+            {loading ? 'Processing...' : 'Discharge Patient'}
+          </button>
+
+        </form>
+
+        {message && (
+          <div className="mt-4 p-3 rounded-lg text-sm font-medium">
+            {message}
+          </div>
+        )}
+
+      </div>
+
+      {billingResult && (
+        <div className="bg-gray-800 border border-gray-700 rounded-xl p-8">
+          <h3 className="text-xl font-semibold text-white mb-6">
+            Billing Summary
+          </h3>
+
+          <div className="space-y-3">
+            {Object.entries(billingResult).map(([key, value]) => (
+              <div key={key} className="flex justify-between">
+                <span className="text-gray-400">
+                  {key.replace(/([A-Z])/g, ' $1')}:
+                </span>
+                <span className="text-white">
+                  {typeof value === 'number'
+                    ? `$${value.toFixed(2)}`
+                    : value}
+                </span>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      )}
+
+    </div>
+  );
+}

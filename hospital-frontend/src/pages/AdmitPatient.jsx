@@ -19,9 +19,9 @@ export default function AdmitPatient() {
     const fetchData = async () => {
       try {
         const [patientsRes, doctorsRes, roomsRes] = await Promise.all([
-          axios.get('http://localhost:8085/api/patients'),
-          axios.get('http://localhost:8085/api/doctors'),
-          axios.get('http://localhost:8085/api/rooms/available')
+          axios.get('https://hospital-backend-xd5h.onrender.com/api/patients'),
+          axios.get('https://hospital-backend-xd5h.onrender.com/api/doctors'),
+          axios.get('https://hospital-backend-xd5h.onrender.com/api/rooms/available')
         ]);
         setPatients(patientsRes.data);
         setDoctors(doctorsRes.data);
@@ -52,7 +52,7 @@ export default function AdmitPatient() {
       const roomId = parseInt(formData.roomId);
       
       await axios.put(
-        `http://localhost:8085/api/patients/${patientId}/admit/${doctorId}/${roomId}`
+        `https://hospital-backend-xd5h.onrender.com/api/patients/${patientId}/admit/${doctorId}/${roomId}`
       );
       setMessage('✓ Patient admitted successfully!');
       setFormData({ patientId: '', doctorId: '', roomId: '' });

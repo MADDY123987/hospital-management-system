@@ -17,8 +17,8 @@ export default function BookAppointment() {
     const fetchData = async () => {
       try {
         const [patientsRes, doctorsRes] = await Promise.all([
-          axios.get('http://localhost:8085/api/patients'),
-          axios.get('http://localhost:8085/api/doctors')
+          axios.get('https://hospital-backend-xd5h.onrender.com/api/patients'),
+          axios.get('https://hospital-backend-xd5h.onrender.com/api/doctors')
         ]);
         setPatients(patientsRes.data);
         setDoctors(doctorsRes.data);
@@ -43,7 +43,7 @@ export default function BookAppointment() {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post('http://localhost:8085/api/appointments', {
+      await axios.post('https://hospital-backend-xd5h.onrender.com/api/appointments', {
         patientId: parseInt(formData.patientId),
         doctorId: parseInt(formData.doctorId)
       });

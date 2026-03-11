@@ -21,7 +21,7 @@ export default function RegisterPatient() {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post('http://localhost:8085/api/patients', {
+      await axios.post('https://hospital-backend-xd5h.onrender.com/api/patients', {
         name: formData.name,
         age: parseInt(formData.age),
         disease: formData.disease

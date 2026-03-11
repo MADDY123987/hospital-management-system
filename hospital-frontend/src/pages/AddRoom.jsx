@@ -21,7 +21,7 @@ export default function AddRoom() {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post('http://localhost:8085/api/rooms', {
+      await axios.post('https://hospital-backend-xd5h.onrender.com/api/rooms', {
         roomNumber: formData.roomNumber,
         roomType: formData.roomType,
         pricePerDay: parseFloat(formData.pricePerDay)

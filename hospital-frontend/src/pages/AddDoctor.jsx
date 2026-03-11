@@ -20,7 +20,7 @@ export default function AddDoctor() {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post('http://localhost:8085/api/doctors', formData);
+      await axios.post('https://hospital-backend-xd5h.onrender.com/api/doctors', formData);;
       setMessage('✓ Doctor added successfully!');
       setFormData({ name: '', specialization: '' });
       setTimeout(() => setMessage(''), 3000);
